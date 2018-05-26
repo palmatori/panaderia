@@ -363,6 +363,10 @@
             <End Role="receta" EntitySet="receta" />
             <End Role="produccion" EntitySet="produccion" />
           </AssociationSet>
+          <AssociationSet Name="medidaproducto" Association="Database1Model.medidaproducto">
+            <End Role="medida" EntitySet="medida" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="producto">
           <Key>
@@ -385,6 +389,8 @@
           <NavigationProperty Name="compra" Relationship="Database1Model.productocompra" FromRole="producto" ToRole="compra" />
           <Property Name="stock" Type="Int32" Nullable="false" />
           <Property Name="precio_venta" Type="String" Nullable="false" />
+          <NavigationProperty Name="medida" Relationship="Database1Model.medidaproducto" FromRole="producto" ToRole="medida" />
+          <Property Name="medidaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="detalle_receta">
           <Key>
@@ -566,6 +572,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
           <NavigationProperty Name="detalle_receta" Relationship="Database1Model.medidadetalle_receta" FromRole="medida" ToRole="detalle_receta" />
+          <NavigationProperty Name="producto" Relationship="Database1Model.medidaproducto" FromRole="medida" ToRole="producto" />
         </EntityType>
         <Association Name="medidadetalle_receta">
           <End Type="Database1Model.medida" Role="medida" Multiplicity="1" />
@@ -588,6 +595,18 @@
             </Principal>
             <Dependent Role="produccion">
               <PropertyRef Name="recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="medidaproducto">
+          <End Type="Database1Model.medida" Role="medida" Multiplicity="1" />
+          <End Type="Database1Model.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medida">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="medidaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

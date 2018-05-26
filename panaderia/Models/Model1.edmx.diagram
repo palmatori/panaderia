@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="Database1Model.medida" Width="1.5" PointX="6.25" PointY="1.375" />
         <AssociationConnector Association="Database1Model.medidadetalle_receta" />
         <AssociationConnector Association="Database1Model.recetaproduccion" />
+        <AssociationConnector Association="Database1Model.medidaproducto" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

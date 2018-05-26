@@ -33,10 +33,12 @@ namespace panaderia.Models
         public int usuarioId { get; set; }
         public int stock { get; set; }
         public string precio_venta { get; set; }
+        public int medidaId { get; set; }
     
         public virtual ICollection<detalle_receta> detalle_receta { get; set; }
         public virtual familia familia { get; set; }
         public virtual usuario usuario { get; set; }
         public virtual ICollection<compra> compra { get; set; }
+        public virtual medida medida { get; set; }
     }
 }

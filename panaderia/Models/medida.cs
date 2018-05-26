@@ -17,11 +17,13 @@ namespace panaderia.Models
         public medida()
         {
             this.detalle_receta = new HashSet<detalle_receta>();
+            this.producto = new HashSet<producto>();
         }
     
         public int Id { get; set; }
         public string nombre { get; set; }
     
         public virtual ICollection<detalle_receta> detalle_receta { get; set; }
+        public virtual ICollection<producto> producto { get; set; }
     }
 }
